@@ -1,0 +1,11 @@
+[package]
+name="elk-utils"
+version="0.1.0"
+authors=["Lionel Karlen"]
+entrypoint="lib.typ"
+license="MIT-0"
+description="A set of formatting utilities to ensure cohesion between my typesetting"
+
+[template]
+path="template"
+entrypoint="main.typ"
