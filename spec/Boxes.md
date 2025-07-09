@@ -7,7 +7,7 @@
 
 # Warning
 -> red
--> if title: warning icon
+-> if title: red caution icon
 ## Params
 - title: (string | content) | none
 - body: body
@@ -19,8 +19,9 @@
 - body: body
 
 
-# Note
+# Tip
 -> green
+-> if title: green lightbulb icon
 ## Params
 - title: (string | content) | none
 - body: body
@@ -28,6 +29,14 @@
 
 # Info
 -> purple
+-> if title: purple info icon
+## Params
+- title: (string | content) | none
+- body: body
+
+# Caution
+-> orange
+-> if title: orange warning icon
 ## Params
 - title: (string | content) | none
 - body: body

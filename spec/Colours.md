@@ -3,7 +3,7 @@
 # Red
 > wrong/warning
 # Blue
-> important/equation
+> example/equation
 # Green
 > correct/tip
 # Purple
