@@ -4,7 +4,6 @@
 
 # Custom Shorthands
 - common math items such as f -> $f$ or cn -> $c_n$
-- greek alphabet in text mode
 - iff - <=>
 - if -> =>
 - func(name: $f$, from: $RR$, to: $RR$, is_def: false) -> function defininition/declaration

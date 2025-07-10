@@ -1,4 +1,5 @@
 #import "@preview/hydra:0.6.1": *;
+#import "@preview/abbr:0.2.3";
 #import "util.typ": format_list
 /// A basic, nondescript layout that serves as the baseline for all others.
 /// It sets the page, margins, and proper metadata for the document.
@@ -33,7 +34,29 @@
     date: date,
   )
 
+  show math.equation.where(block: true): it => [
+    #set align(left)
+    #it
+  ]
+
   doc
+
+  // Abbreviations table setup
+  {
+    show heading.where(level: 1): it => {
+      pagebreak(weak: true)
+      it.body
+    }
+    abbr.list(
+      title: context {
+        if text.lang == "de" {
+          "Abkürzungen"
+        } else {
+          "Abbreviations"
+        }
+      },
+    )
+  }
 }
 
 /// Layout used for exercise series.
@@ -251,10 +274,10 @@
 
   set heading(numbering: numbering)
 
-
   show heading: it => {
     let number = counter(heading)
     if it.level == 1 {
+      pagebreak(weak: true)
       v(5cm)
       align(center)[
         #text(size: 30pt)[

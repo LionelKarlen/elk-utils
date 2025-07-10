@@ -9,3 +9,5 @@
 #include "sections.typ"
 #pagebreak()
 #include "boxes.typ"
+#pagebreak()
+#include "shorthands.typ"
