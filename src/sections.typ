@@ -41,7 +41,7 @@
   /// -> auto | number
   level: 3,
   body,
-) = base_section(level: level, title_preamble: "Def", title: title, body)
+) = base_section(level: level, title_preamble: "Definition", title: title, body)
 
 /// Example section
 ///
@@ -58,7 +58,7 @@
   show math.equation.where(block: true): set text(fill: blue.darken(50%))
   base_section(
     level: level,
-    title_preamble: "Ex",
+    title_preamble: context { if text.lang == "de" { "Beispiel" } else { "Example" } },
     title: title,
     outlined: false,
     body,
@@ -81,9 +81,9 @@
   level: level,
   title_preamble: context {
     if text.lang == "de" {
-      "Bem"
+      "Bemerkung"
     } else {
-      "Note"
+      "Remark"
     }
   },
   title: title,
@@ -135,6 +135,32 @@
 ) = base_section(
   level: level,
   title_preamble: "Lemma",
+  title: title,
+  number: number,
+  body,
+)
+
+/// Corollary section
+///
+/// -> content
+#let cor(
+  /// Title of the section
+  /// -> string | content
+  title: "",
+  /// Level of the heading
+  /// -> auto | number
+  level: 3,
+  /// Numbering for reference. This is not an internal reference, and will not show up when referencing. The assumption here is that this number comes from a different script, and will therefore not (or rarely) change.
+  /// -> string | none
+  number: none,
+  body,
+) = base_section(
+  level: level,
+  title_preamble: context {
+    if text.lang == "de" {
+      "Korollar"
+    } else { "Corollary" }
+  },
   title: title,
   number: number,
   body,

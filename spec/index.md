@@ -5,5 +5,4 @@
 - Boxes
 - Colours
 - Shorthands
-- Circuits
 - Visualisation
