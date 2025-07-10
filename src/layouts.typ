@@ -244,7 +244,7 @@
     disclaimer
     pagebreak()
   }
-  outline()
+  outline(indent: 2em)
   pagebreak()
   [#metadata("startofdoc")<startofdoc>]
 
@@ -263,7 +263,7 @@
       ]
       pagebreak()
     } else {
-      underline([#number.display() #it.body])
+      underline([#it.body])
     }
   }
 

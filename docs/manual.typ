@@ -6,4 +6,6 @@
 #pagebreak()
 #include "layouts.typ"
 #pagebreak()
+#include "sections.typ"
+#pagebreak()
 #include "boxes.typ"
