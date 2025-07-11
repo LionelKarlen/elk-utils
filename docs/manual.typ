@@ -11,3 +11,5 @@
 #include "boxes.typ"
 #pagebreak()
 #include "shorthands.typ"
+#pagebreak()
+#include "visualisations.typ"
