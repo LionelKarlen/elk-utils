@@ -3,7 +3,7 @@
 /// Iff arrow shorthand
 #let iff = math.class("relation", math.arrow.r.double.long.l)
 /// If/follows arrow shorthand
-#let follows = math.class("relation", math.arrow.r.double.long.l)
+#let follows = math.class("relation", math.arrow.r.double.long)
 /// To arrow shorthand
 #let to = math.class("relation", math.arrow.r.long)
 
