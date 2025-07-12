@@ -4,6 +4,8 @@
 #let iff = math.class("relation", math.arrow.r.double.long.l)
 /// If/follows arrow shorthand
 #let follows = math.class("relation", math.arrow.r.double.long.l)
+/// To arrow shorthand
+#let to = math.class("relation", math.arrow.r.long)
 
 /// Quick mathematical function defintion.
 /// -> content
