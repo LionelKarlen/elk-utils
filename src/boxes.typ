@@ -1,3 +1,4 @@
+#import "colors.typ";
 /// Basic box that serves as the baseline for other boxes.
 /// -> content
 #let base_box(
@@ -19,7 +20,7 @@
   ]
 }
 
-/// Alert box. Renders red with the "Alert" prefix.
+/// Alert box. Renders with the "Alert" prefix.
 ///
 /// -> content
 #let alert(
@@ -28,12 +29,12 @@
   title: context { if text.lang == "de" { "Achtung" } else { "Alert" } },
   body,
 ) = base_box(
-  color: color.red,
+  color: colors.alert,
   title: title,
   body,
 )
 
-/// Equation box. Renders blue.
+/// Equation box
 ///
 /// -> content
 #let eq(
@@ -43,11 +44,11 @@
   body,
 ) = base_box(
   title: title,
-  color: color.blue,
+  color: colors.equation,
   body,
 )
 
-/// Tip box. Renders green with the "Tip" prefix.
+/// Tip box. Renders with the "Tip" prefix.
 ///
 /// -> content
 #let tip(
@@ -56,12 +57,12 @@
   title: "Tip",
   body,
 ) = base_box(
-  color: color.green,
+  color: colors.tip,
   title: title,
   body,
 )
 
-/// Info box. Renders purple with the "Info" prefix.
+/// Info box. Renders with the "Info" prefix.
 ///
 /// -> content
 #let info(
@@ -70,12 +71,12 @@
   title: "Info",
   body,
 ) = base_box(
-  color: color.purple,
+  color: colors.info,
   title: title,
   body,
 )
 
-/// Caution box. Renders orange with the "Caution" prefix.
+/// Caution box. Renders with the "Caution" prefix.
 ///
 /// -> content
 #let caution(
@@ -84,7 +85,7 @@
   title: context { if text.lang == "de" { "Vorsicht" } else { "Caution" } },
   body,
 ) = base_box(
-  color: color.orange,
+  color: colors.caution,
   title: title,
   body,
 )

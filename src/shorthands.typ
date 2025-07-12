@@ -1,4 +1,5 @@
 #import "@preview/abbr:0.2.3"
+#import "colors.typ";
 
 /// Iff arrow shorthand
 #let iff = math.class("relation", math.arrow.r.double.long.l)
@@ -11,28 +12,28 @@
 /// highlight in any colour
 #let hx(color: none, body) = highlight(color: color.transparentize(80%), body)
 /// highlight alert
-#let ha(body) = highlight(fill: red.transparentize(80%), body)
+#let ha(body) = highlight(fill: colors.alert.transparentize(80%), body)
 /// highlight equation
-#let he(body) = highlight(fill: blue.transparentize(80%), body)
+#let he(body) = highlight(fill: colors.equation.transparentize(80%), body)
 /// highlight info
-#let hi(body) = highlight(fill: purple.transparentize(80%), body)
+#let hi(body) = highlight(fill: colors.info.transparentize(80%), body)
 /// highlight tip
-#let ht(body) = highlight(fill: green.transparentize(80%), body)
+#let ht(body) = highlight(fill: colors.tip.transparentize(80%), body)
 /// highlight caution
-#let hc(body) = highlight(fill: orange.transparentize(80%), body)
+#let hc(body) = highlight(fill: colors.caution.transparentize(80%), body)
 
 /// text in any colour
 #let tx(color: none, body) = text(fill: color, body)
 /// text in alert
-#let ta(body) = text(fill: red, body)
+#let ta(body) = text(fill: colors.alert, body)
 /// text in equation
-#let te(body) = text(fill: blue, body)
+#let te(body) = text(fill: colors.equation, body)
 /// text in info
-#let ti(body) = text(fill: purple, body)
+#let ti(body) = text(fill: colors.info, body)
 /// text in tip
-#let tt(body) = text(fill: green, body)
+#let tt(body) = text(fill: colors.tip, body)
 /// text in caution
-#let tc(body) = text(fill: orange, body)
+#let tc(body) = text(fill: colors.caution, body)
 
 /// Quick mathematical function defintion.
 /// -> content
