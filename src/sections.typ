@@ -14,6 +14,8 @@
   /// Numbering for reference. This is not an internal reference, and will not show up when referencing. The assumption here is that this number comes from a different script, and will therefore not (or rarely) change.
   /// -> string | none
   number: none,
+  /// Whether to include the heading in the Table of Contents.
+  /// -> bool
   outlined: true,
   body,
 ) = {
@@ -21,7 +23,7 @@
     it.body
   }
 
-  heading(level: level)[#underline(stroke: 1pt, offset: 1.5pt)[*#title_preamble.*] #{
+  heading(level: level, outlined: outlined)[#underline(stroke: 1pt, offset: 1.5pt)[*#title_preamble.*] #{
       if number != none {
         [* #number*]
       }
@@ -40,8 +42,11 @@
   /// Level of the heading
   /// -> auto | number
   level: 3,
+  /// Whether to include the heading in the Table of Contents.
+  /// -> bool
+  outlined: true,
   body,
-) = base_section(level: level, title_preamble: "Definition", title: title, body)
+) = base_section(level: level, outlined: outlined, title_preamble: "Definition", title: title, body)
 
 /// Example section
 ///
@@ -53,6 +58,9 @@
   /// Level of the heading
   /// -> auto | number
   level: 3,
+  /// Whether to include the heading in the Table of Contents.
+  /// -> bool
+  outlined: true,
   body,
 ) = {
   show math.equation.where(block: true): set text(fill: blue.darken(50%))
@@ -60,7 +68,7 @@
     level: level,
     title_preamble: context { if text.lang == "de" { "Beispiel" } else { "Example" } },
     title: title,
-    outlined: false,
+    outlined: outlined,
     body,
   )
 }
@@ -69,16 +77,20 @@
 /// Note section
 ///
 /// -> content
-#let note(
+#let rmrk(
   /// Title of the section
   /// -> string | content
   title: "",
   /// Level of the heading
   /// -> auto | number
   level: 3,
+  /// Whether to include the heading in the Table of Contents.
+  /// -> bool
+  outlined: true,
   body,
 ) = base_section(
   level: level,
+  outlined: outlined,
   title_preamble: context {
     if text.lang == "de" {
       "Bemerkung"
@@ -93,7 +105,7 @@
 /// Theorem section
 ///
 /// -> content
-#let theorem(
+#let thrm(
   /// Title of the section
   /// -> string | content
   title: "",
@@ -103,9 +115,13 @@
   /// Numbering for reference. This is not an internal reference, and will not show up when referencing. The assumption here is that this number comes from a different script, and will therefore not (or rarely) change.
   /// -> string | none
   number: none,
+  /// Whether to include the heading in the Table of Contents.
+  /// -> bool
+  outlined: true,
   body,
 ) = base_section(
   level: level,
+  outlined: outlined,
   title_preamble: context {
     if text.lang == "de" {
       "Satz"
@@ -121,7 +137,7 @@
 /// Lemma section
 ///
 /// -> content
-#let lemma(
+#let lma(
   /// Title of the section
   /// -> string | content
   title: "",
@@ -131,10 +147,14 @@
   /// Numbering for reference. This is not an internal reference, and will not show up when referencing. The assumption here is that this number comes from a different script, and will therefore not (or rarely) change.
   /// -> string | none
   number: none,
+  /// Whether to include the heading in the Table of Contents.
+  /// -> bool
+  outlined: true,
   body,
 ) = base_section(
   level: level,
   title_preamble: "Lemma",
+  outlined: outlined,
   title: title,
   number: number,
   body,
@@ -153,9 +173,13 @@
   /// Numbering for reference. This is not an internal reference, and will not show up when referencing. The assumption here is that this number comes from a different script, and will therefore not (or rarely) change.
   /// -> string | none
   number: none,
+  /// Whether to include the heading in the Table of Contents.
+  /// -> bool
+  outlined: true,
   body,
 ) = base_section(
   level: level,
+  outlined: outlined,
   title_preamble: context {
     if text.lang == "de" {
       "Korollar"
@@ -165,3 +189,51 @@
   number: number,
   body,
 )
+
+/// Procedure section
+///
+/// -> content
+#let prcd(
+  /// Title of the section
+  /// -> string | content
+  title: "",
+  /// Level of the heading
+  /// -> auto | number
+  level: 3,
+  /// Whether to include the heading in the Table of Contents.
+  /// -> bool
+  outlined: true,
+  body,
+) = base_section(
+  level: level,
+  outlined: outlined,
+  title_preamble: context {
+    if text.lang == "de" {
+      "Prozedur"
+    } else {
+      "Procedure"
+    }
+  },
+  title: title,
+  body,
+)
+
+/// Anonymous section. Used for all-purpose sections, particularly sub-section that have no defined use, or serve as a collection of more specific sections.
+///
+/// -> content
+#let anon(
+  /// Title of the section
+  /// -> string | content
+  title: "",
+  /// Level of the heading
+  /// -> auto | number
+  level: 3,
+  /// Whether to include the heading in the Table of Contents.
+  /// -> bool
+  outlined: true,
+  body,
+) = {
+  heading(outlined: outlined, level: level, title)
+
+  pad(left: 1cm, body)
+}

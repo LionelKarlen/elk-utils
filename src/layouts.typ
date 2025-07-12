@@ -285,6 +285,8 @@
         ]
       ]
       pagebreak()
+    } else if it.level == 2 {
+      it.body
     } else {
       underline([#it.body])
     }

@@ -1,3 +1,4 @@
+#import "colors.typ";
 /// Basic box that serves as the baseline for other boxes.
 /// -> content
 #let base_box(
@@ -19,46 +20,72 @@
   ]
 }
 
-/// Alert box. Renders red with the "Alert" prefix.
+/// Alert box. Renders with the "Alert" prefix.
 ///
 /// -> content
-#let alert(body) = base_box(
-  color: color.red,
+#let alert(
+  /// Title for the box.
+  /// -> string | content | none
   title: context { if text.lang == "de" { "Achtung" } else { "Alert" } },
   body,
-)
-
-/// Equation box. Renders blue.
-///
-/// -> content
-#let equation(body) = base_box(
-  color: color.blue,
+) = base_box(
+  color: colors.alert,
+  title: title,
   body,
 )
 
-/// Tip box. Renders green with the "Tip" prefix.
+/// Equation box
 ///
 /// -> content
-#let tip(body) = base_box(
-  color: color.green,
+#let eq(
+  /// Title for the box.
+  /// -> string | content | none
+  title: none,
+  body,
+) = base_box(
+  title: title,
+  color: colors.equation,
+  body,
+)
+
+/// Tip box. Renders with the "Tip" prefix.
+///
+/// -> content
+#let tip(
+  /// Title for the box.
+  /// -> string | content | none
   title: "Tip",
   body,
-)
-
-/// Info box. Renders purple with the "Note" prefix.
-///
-/// -> content
-#let info(body) = base_box(
-  color: color.purple,
-  title: context { if text.lang == "de" { "Bemerkung" } else { "Note" } },
+) = base_box(
+  color: colors.tip,
+  title: title,
   body,
 )
 
-/// Caution box. Renders orange with the "Caution" prefix.
+/// Info box. Renders with the "Info" prefix.
 ///
 /// -> content
-#let caution(body) = base_box(
-  color: color.orange,
+#let info(
+  /// Title for the box.
+  /// -> string | content | none
+  title: "Info",
+  body,
+) = base_box(
+  color: colors.info,
+  title: title,
+  body,
+)
+
+/// Caution box. Renders with the "Caution" prefix.
+///
+/// -> content
+#let caution(
+  /// Title for the box.
+  /// -> string | content | none
   title: context { if text.lang == "de" { "Vorsicht" } else { "Caution" } },
+  body,
+) = base_box(
+  color: colors.caution,
+  title: title,
   body,
 )
