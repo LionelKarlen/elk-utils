@@ -189,3 +189,31 @@
   number: number,
   body,
 )
+
+/// Procedure section
+///
+/// -> content
+#let prcd(
+  /// Title of the section
+  /// -> string | content
+  title: "",
+  /// Level of the heading
+  /// -> auto | number
+  level: 3,
+  /// Whether to include the heading in the Table of Contents.
+  /// -> bool
+  outlined: true,
+  body,
+) = base_section(
+  level: level,
+  outlined: outlined,
+  title_preamble: context {
+    if text.lang == "de" {
+      "Prozedur"
+    } else {
+      "Procedure"
+    }
+  },
+  title: title,
+  body,
+)
