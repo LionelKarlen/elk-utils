@@ -7,6 +7,33 @@
 /// To arrow shorthand
 #let to = math.class("relation", math.arrow.r.long)
 
+
+/// highlight in any colour
+#let hx(color: none, body) = highlight(color: color.transparentize(80%), body)
+/// highlight alert
+#let ha(body) = highlight(fill: red.transparentize(80%), body)
+/// highlight equation
+#let he(body) = highlight(fill: blue.transparentize(80%), body)
+/// highlight info
+#let hi(body) = highlight(fill: purple.transparentize(80%), body)
+/// highlight tip
+#let ht(body) = highlight(fill: green.transparentize(80%), body)
+/// highlight caution
+#let hc(body) = highlight(fill: orange.transparentize(80%), body)
+
+/// text in any colour
+#let tx(color: none, body) = text(fill: color, body)
+/// text in alert
+#let ta(body) = text(fill: red, body)
+/// text in equation
+#let te(body) = text(fill: blue, body)
+/// text in info
+#let ti(body) = text(fill: purple, body)
+/// text in tip
+#let tt(body) = text(fill: green, body)
+/// text in caution
+#let tc(body) = text(fill: orange, body)
+
 /// Quick mathematical function defintion.
 /// -> content
 #let func(
