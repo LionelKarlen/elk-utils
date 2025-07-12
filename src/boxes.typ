@@ -22,16 +22,27 @@
 /// Alert box. Renders red with the "Alert" prefix.
 ///
 /// -> content
-#let alert(body) = base_box(
-  color: color.red,
+#let alert(
+  /// Title for the box.
+  /// -> string | content | none
   title: context { if text.lang == "de" { "Achtung" } else { "Alert" } },
+  body,
+) = base_box(
+  color: color.red,
+  title: title,
   body,
 )
 
 /// Equation box. Renders blue.
 ///
 /// -> content
-#let equation(body) = base_box(
+#let eq(
+  /// Title for the box.
+  /// -> string | content | none
+  title: none,
+  body,
+) = base_box(
+  title: title,
   color: color.blue,
   body,
 )
@@ -39,26 +50,41 @@
 /// Tip box. Renders green with the "Tip" prefix.
 ///
 /// -> content
-#let tip(body) = base_box(
-  color: color.green,
+#let tip(
+  /// Title for the box.
+  /// -> string | content | none
   title: "Tip",
+  body,
+) = base_box(
+  color: color.green,
+  title: title,
   body,
 )
 
-/// Info box. Renders purple with the "Note" prefix.
+/// Info box. Renders purple with the "Info" prefix.
 ///
 /// -> content
-#let info(body) = base_box(
+#let info(
+  /// Title for the box.
+  /// -> string | content | none
+  title: "Info",
+  body,
+) = base_box(
   color: color.purple,
-  title: context { if text.lang == "de" { "Bemerkung" } else { "Note" } },
+  title: title,
   body,
 )
 
 /// Caution box. Renders orange with the "Caution" prefix.
 ///
 /// -> content
-#let caution(body) = base_box(
-  color: color.orange,
+#let caution(
+  /// Title for the box.
+  /// -> string | content | none
   title: context { if text.lang == "de" { "Vorsicht" } else { "Caution" } },
+  body,
+) = base_box(
+  color: color.orange,
+  title: title,
   body,
 )
