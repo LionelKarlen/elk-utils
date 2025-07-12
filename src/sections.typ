@@ -68,7 +68,7 @@
     level: level,
     title_preamble: context { if text.lang == "de" { "Beispiel" } else { "Example" } },
     title: title,
-    outlined: false,
+    outlined: outlined,
     body,
   )
 }
@@ -217,3 +217,23 @@
   title: title,
   body,
 )
+
+/// Anonymous section. Used for all-purpose sections, particularly sub-section that have no defined use, or serve as a collection of more specific sections.
+///
+/// -> content
+#let anon(
+  /// Title of the section
+  /// -> string | content
+  title: "",
+  /// Level of the heading
+  /// -> auto | number
+  level: 3,
+  /// Whether to include the heading in the Table of Contents.
+  /// -> bool
+  outlined: true,
+  body,
+) = {
+  heading(outlined: outlined, level: level, title)
+
+  pad(left: 1cm, body)
+}
