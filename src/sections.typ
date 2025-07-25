@@ -236,7 +236,7 @@
   title: "",
   /// Level of the heading
   /// -> auto | number
-  level: 3,
+  level: 2,
   /// Whether to include the heading in the Table of Contents.
   /// -> bool
   outlined: true,
