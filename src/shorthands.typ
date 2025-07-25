@@ -7,6 +7,8 @@
 #let follows = math.class("relation", math.arrow.r.double.long)
 /// To arrow shorthand
 #let to = math.class("relation", math.arrow.r.long)
+/// Such that shorthand
+#let st = math.colon
 
 
 /// highlight in any colour
