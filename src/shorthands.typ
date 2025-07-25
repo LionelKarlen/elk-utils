@@ -9,6 +9,8 @@
 #let to = math.class("relation", math.arrow.r.long)
 /// Such that shorthand
 #let st = math.colon
+/// Not equal shorthand
+#let neq = math.eq.not
 
 
 /// highlight in any colour
