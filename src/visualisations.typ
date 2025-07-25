@@ -123,3 +123,45 @@
     point(at: at, label: label, size: size)
   }
 }
+
+/// Eline shorthand to quickly define a line/arrow with a label.
+///
+/// -> content
+#let eline(
+  /// From position
+  /// -> coordinate
+  from,
+  /// To position
+  /// -> coordinate
+  to,
+  /// Label anchor position
+  /// -> string
+  anchor: none,
+  /// Label position along the line
+  /// -> string
+  pos: ".mid",
+  /// Line/Arrow/Text colour
+  /// -> color
+  colour: black,
+  /// Arrow mark
+  /// -> string
+  mark: none,
+  /// Label content
+  /// -> string | content
+  label: none,
+  /// Line reference name
+  /// -> string
+  name: none,
+  /// Label padding
+  /// -> number
+  padding: 5pt,
+) = {
+  cetz.draw.line(from, to, fill: colour, stroke: colour, mark: (end: mark, fill: colour), name: name)
+  if label != none {
+    if anchor != none {
+      cetz.draw.content(name, padding: padding, anchor: anchor, text(fill: colour, label))
+    } else {
+      cetz.draw.content(name + pos, padding: padding, text(fill: colour, label))
+    }
+  }
+}
