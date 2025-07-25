@@ -48,6 +48,16 @@
   body,
 ) = base_section(level: level, outlined: outlined, title_preamble: "Definition", title: title, body)
 
+/// Inline Example
+///
+/// -> content
+#let inline_ex(body) = {
+  show math.equation.where(block: true): set text(fill: blue.darken(50%))
+  show math.equation: set text(fill: blue.darken(50%))
+  set text(fill: blue.darken(50%))
+  body
+}
+
 /// Example section
 ///
 /// -> content
@@ -63,13 +73,12 @@
   outlined: true,
   body,
 ) = {
-  show math.equation.where(block: true): set text(fill: blue.darken(50%))
   base_section(
     level: level,
     title_preamble: context { if text.lang == "de" { "Beispiel" } else { "Example" } },
     title: title,
     outlined: outlined,
-    body,
+    inline_ex(body),
   )
 }
 
