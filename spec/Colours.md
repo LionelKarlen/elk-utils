@@ -1,12 +1,19 @@
-# Black
-> base
-# Red
-> wrong/warning
-# Blue
-> example/equation
-# Green
-> correct/tip
-# Purple
-> informative/good to know
-# Orange
-> conditional/careful
+# Base
+## Black
+- base text
+- base sketches
+
+## Red
+- important
+- highlights
+
+## Blue
+- examples
+- extra information
+- tips
+
+# Helpers
+> Used to support visuals and readability
+- Orange
+- Purple
+- Green

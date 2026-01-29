@@ -3,7 +3,22 @@
 - write custom show-rules for others
 
 # Custom Shorthands
-- common math items such as f -> $f$ or cn -> $c_n$
-- iff - <=>
-- if -> =>
-- func(name: $f$, from: $RR$, to: $RR$, is_def: false) -> function defininition/declaration
+## Math symbols
+- iff = <=>
+- if = =>
+- imp = if
+- follows = if
+- to = ->
+- dto = |->
+- neq = math.eq.not
+
+## Utils
+- to-do = big todo break
+- hx = highlight text
+- tx = text colour
+ 
+## Abbr
+- a = abbr.a
+- apl = abbr.pla
+- al = abbr.l
+- apll = abbr.pll
