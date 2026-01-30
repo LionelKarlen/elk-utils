@@ -31,3 +31,14 @@
     ],
   )
 }
+
+#let parse_positional(..contents) = {
+  let (first, ..others) = contents.pos()
+  // if only one argument is given, return that as the body
+  // else return the first arg as title
+  if others.len() == 0 {
+    return (none, first)
+  } else {
+    return (first, ..others)
+  }
+}

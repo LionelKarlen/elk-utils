@@ -1,5 +1,10 @@
-#let alert = color.red;
-#let equation = color.blue;
-#let info = color.purple;
-#let tip = color.green;
-#let caution = color.orange;
+#let base = (
+  black: color.black,
+  blue: color.blue,
+  red: color.red,
+  green: color.green,
+);
+#let helpers = (
+  organge: color.orange,
+  purple: color.purple,
+);

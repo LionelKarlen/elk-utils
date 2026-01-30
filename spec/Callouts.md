@@ -10,7 +10,7 @@
 - title: (string | content) | none
 - body: body
 
-# Warning
+# Caution
 ## Params
 - title: (string | content) | none
 - body: body
