@@ -29,10 +29,22 @@
   }
   [
     #if reference_label != none [
-      #make_heading(level: level, title: title, title_preamble: title_preamble, number: number, outlined: outlined)
+      #make_heading(
+        level: level,
+        title: title,
+        title_preamble: title_preamble,
+        number: number,
+        outlined: outlined,
+      )
       #label(reference_label)
     ] else [
-      #make_heading(level: level, title: title, title_preamble: title_preamble, number: number, outlined: outlined)
+      #make_heading(
+        level: level,
+        title: title,
+        title_preamble: title_preamble,
+        number: number,
+        outlined: outlined,
+      )
     ]
 
     #pad(left: 1cm, body)
@@ -95,7 +107,9 @@
 ) = {
   base_section(
     level: level,
-    title_preamble: context { if text.lang == "de" { "Beispiel" } else { "Example" } },
+    title_preamble: context {
+      if text.lang == "de" { "Beispiel" } else { "Example" }
+    },
     title: title,
     outlined: outlined,
     reference_label: reference_label,

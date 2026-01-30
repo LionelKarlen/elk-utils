@@ -36,7 +36,12 @@
   }
   if grid_steps != none {
     // draw grid
-    cetz.draw.grid(f, t, step: 1 / grid_steps, help-lines: true)
+    cetz.draw.grid(
+      f,
+      t,
+      step: 1 / grid_steps,
+      help-lines: true,
+    )
   }
   if show_axes {
     // x axis
@@ -156,10 +161,20 @@
   /// -> number
   padding: 5pt,
 ) = {
-  cetz.draw.line(from, to, fill: colour, stroke: colour, mark: (end: mark, fill: colour), name: name)
+  cetz.draw.line(
+    from,
+    to,
+    fill: colour,
+    stroke: colour,
+    mark: (end: mark, fill: colour),
+    name: name,
+  )
   if label != none {
     if anchor != none {
-      cetz.draw.content(name, padding: padding, anchor: anchor, text(fill: colour, label))
+      cetz.draw.content(name, padding: padding, anchor: anchor, text(
+        fill: colour,
+        label,
+      ))
     } else {
       cetz.draw.content(name + pos, padding: padding, text(fill: colour, label))
     }

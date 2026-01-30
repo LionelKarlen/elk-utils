@@ -1,4 +1,4 @@
-#import "src/layouts.typ": *
+#import "src/layouts.typ": series, summary
 #import "src/boxes.typ": *
 #import "src/sections.typ": *
 #import "src/shorthands.typ": *

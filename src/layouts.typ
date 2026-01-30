@@ -1,5 +1,5 @@
-#import "@preview/hydra:0.6.1": *;
-#import "@preview/abbr:0.2.3";
+#import "@preview/hydra:0.6.2": *;
+#import "@preview/abbr:0.3.0";
 #import "util.typ": format_list
 /// A basic, nondescript layout that serves as the baseline for all others.
 /// It sets the page, margins, and proper metadata for the document.
@@ -34,10 +34,10 @@
     date: date,
   )
 
-  show math.equation.where(block: true): it => [
-    #set align(left)
-    #it
-  ]
+  // show math.equation.where(block: true): it => [
+  //   #set align(left)
+  //   #it
+  // ]
 
   doc
 
@@ -62,7 +62,7 @@
 /// Layout used for exercise series.
 ///
 /// -> content
-#let series_layout(
+#let series(
   /// The class for which the document is being typed
   /// -> string
   class: "Class",
@@ -124,75 +124,10 @@
 }
 
 
-/// Layout used for lecture writeups.
+/// Layout used for summaries.
 ///
 /// -> content
-#let writeup_layout(
-  /// The class for which the document is being typed
-  /// -> string
-  class: "Class",
-  /// The preamble for what to call a lecture.
-  /// -> string
-  lecture_preamble: "Lecture",
-  /// The lecture number
-  /// -> number | string
-  lecture: 1,
-  /// The numbering employed by the lecture
-  /// -> string
-  numbering: "1.1.i.",
-  /// The authors involved in the project
-  /// -> string | string[]
-  authors: "",
-  /// The date of creation
-  /// -> datetime
-  date: datetime.today(),
-  doc,
-) = {
-  // Initialise page
-  show: base_layout.with(
-    authors: authors,
-    date: date,
-  )
-
-  let authors = format_list(authors)
-
-  // Set up header
-  set page(
-    header-ascent: 0.75cm,
-    header: context {
-      if counter(page).get().first() > 1 {
-        grid(
-          columns: (1fr, 1fr, 1fr),
-          align: (left, center, right),
-          gutter: 6pt,
-          smallcaps(class), [ #lecture_preamble #lecture], hydra(1),
-        )
-      }
-    },
-  )
-
-  // Set title
-  grid(
-    columns: (1fr, 1fr),
-    rows: (auto, auto),
-    align: (left, right),
-    gutter: 6pt,
-    smallcaps(class), authors,
-    [ #lecture_preamble #lecture], emph(date.display()),
-  )
-  box(line(length: 100%, stroke: 1pt))
-
-
-  set heading(numbering: numbering)
-
-  doc
-}
-
-
-/// Layout used for class summaries.
-///
-/// -> content
-#let summary_layout(
+#let summary(
   /// The class for which the document is being typed
   /// -> string
   class: "Class",
@@ -227,11 +162,17 @@
     header-ascent: 0.75cm,
     header: context {
       let page_number = counter(page)
-      let first_page = counter(page).at(query(label("startofdoc")).first().location()).first()
-      let chapter_locations = query(heading.where(level: 1, outlined: true)).map(v => counter(page)
-        .at(v.location())
-        .first())
-      if page_number.get().first() >= first_page and chapter_locations.all(v => v != page_number.get().first()) {
+      let first_page = counter(page)
+        .at(query(label("startofdoc")).first().location())
+        .first()
+      let chapter_locations = query(heading.where(
+        level: 1,
+        outlined: true,
+      )).map(v => counter(page).at(v.location()).first())
+      if (
+        page_number.get().first() >= first_page
+          and chapter_locations.all(v => v != page_number.get().first())
+      ) {
         grid(
           columns: (1fr, 1fr),
           align: (left, right),
@@ -242,7 +183,9 @@
     },
     footer: context {
       let page_number = counter(page)
-      let first_page = counter(page).at(query(label("startofdoc")).first().location()).first()
+      let first_page = counter(page)
+        .at(query(label("startofdoc")).first().location())
+        .first()
       if page_number.get().first() >= first_page {
         align(center, counter(page).display())
       }
