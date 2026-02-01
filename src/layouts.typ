@@ -1,4 +1,5 @@
 #import "deps.typ": abbr, hydra;
+#import "localisation.typ": i18n;
 #import "util.typ": format_list
 /// A basic, nondescript layout that serves as the baseline for all others.
 /// It sets the page, margins, and proper metadata for the document.
@@ -47,13 +48,7 @@
       it.body
     }
     abbr.list(
-      title: context {
-        if text.lang == "de" {
-          "Abkürzungen"
-        } else {
-          "Abbreviations"
-        }
-      },
+      title: context { i18n.at(text.lang).abbreviations },
     )
   }
 }
@@ -67,7 +62,7 @@
   class: "Class",
   /// The preamble for what to call Series
   /// -> string
-  series_preamble: "Series",
+  series_preamble: context { i18n.at(text.lang).series },
   /// The series number
   /// -> number | string
   series: 1,
@@ -132,7 +127,7 @@
   class: "Class",
   /// The preamble for what to call a summary.
   /// -> string
-  summary_preamble: "Summary",
+  summary_preamble: context { i18n.at(text.lang).summary },
   /// The numbering employed by the summary
   /// -> string
   numbering: "I.1.1.i.",

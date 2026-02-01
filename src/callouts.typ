@@ -1,6 +1,7 @@
 #import "deps.typ": showybox;
 #import "util.typ": parse_positional;
-#import "colors.typ": *;
+#import "localisation.typ": i18n;
+#import "colors.typ": base;
 
 /// Callout box, used to highlight a certain section.
 /// @param preamble: string|none - Preamble for the title section
@@ -27,7 +28,7 @@
       sep-thickness: 0pt,
     ),
     title: {
-      if preamble.len() != 0 [#strong(preamble)]
+      if preamble != none [#strong(preamble)]
       if title != none [: #emph(title)] else [.]
     },
     ..body,
@@ -37,38 +38,51 @@
 
 
 
-// TODO: Localisation
-
 /// Theorem callout box
 /// @param ..contents: args<content> - Content blocks for the callout. If the number of contents is greater than 1, the first one is considered the title.
 /// -> content
-#let theorem(..contents) = callout(preamble: "Theorem", ..contents);
+#let theorem(..contents) = callout(
+  preamble: context { i18n.at(text.lang).callouts.theorem },
+  ..contents,
+);
 
 /// Definition callout box
 /// @param ..contents: args<content> - Content blocks for the callout. If the number of contents is greater than 1, the first one is considered the title.
 /// -> content
-#let definition(..contents) = callout(preamble: "Definition", ..contents);
+#let definition(..contents) = callout(
+  preamble: context { i18n.at(text.lang).callouts.definition },
+  ..contents,
+);
 
 /// Lemma callout box
 /// @param ..contents: args<content> - Content blocks for the callout. If the number of contents is greater than 1, the first one is considered the title.
 /// -> content
-#let lemma(..contents) = callout(preamble: "Lemma", ..contents);
+#let lemma(..contents) = callout(
+  preamble: context { i18n.at(text.lang).callouts.lemma },
+  ..contents,
+);
 
 /// Proof callout box
 /// @param ..contents: args<content> - Content blocks for the callout. If the number of contents is greater than 1, the first one is considered the title.
 /// -> content
-#let proof(..contents) = callout(preamble: "Proof", ..contents);
+#let proof(..contents) = callout(
+  preamble: context { i18n.at(text.lang).callouts.proof },
+  ..contents,
+);
 
 /// Corollary callout box
 /// @param ..contents: args<content> - Content blocks for the callout. If the number of contents is greater than 1, the first one is considered the title.
 /// -> content
-#let corollary(..contents) = callout(preamble: "Corollary", ..contents);
+#let corollary(..contents) = callout(
+  preamble: context { i18n.at(text.lang).callouts.corollary },
+  ..contents,
+);
 
 /// Caution callout box
 /// @param ..contents: args<content> - Content blocks for the callout. If the number of contents is greater than 1, the first one is considered the title.
 /// -> content
 #let caution(..contents) = callout(
-  preamble: "Caution",
+  preamble: context { i18n.at(text.lang).callouts.caution },
   color: base.red,
   ..contents,
 );
@@ -77,7 +91,7 @@
 /// @param ..contents: args<content> - Content blocks for the callout. If the number of contents is greater than 1, the first one is considered the title.
 /// -> content
 #let tip(..contents) = callout(
-  preamble: "Tip",
+  preamble: context { i18n.at(text.lang).callouts.tip },
   color: base.green,
   ..contents,
 );
@@ -86,7 +100,7 @@
 /// @param ..contents: args<content> - Content blocks for the callout. If the number of contents is greater than 1, the first one is considered the title.
 /// -> content
 #let info(..contents) = callout(
-  preamble: "Info",
+  preamble: context { i18n.at(text.lang).callouts.info },
   color: base.blue,
   ..contents,
 );
@@ -97,7 +111,7 @@
 // TODO: left align equations
 // TODO: change math font
 #let example(..contents) = callout(
-  preamble: "Example",
+  preamble: context { i18n.at(text.lang).callouts.example },
   color: base.blue,
   ..contents,
 );
