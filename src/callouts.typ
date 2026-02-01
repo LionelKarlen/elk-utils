@@ -9,7 +9,7 @@
 /// -> content
 #let callout(preamble: "", color: base.black, ..contents) = {
   let (title, ..body) = parse_positional(..contents)
-  showybox(
+  let callout_box = showybox(
     frame: (
       radius: 0pt,
       thickness: 0pt,
@@ -32,6 +32,7 @@
     },
     ..body,
   )
+  box(stroke: (left: 1pt + color), inset: (left: 0.5pt), callout_box)
 }
 
 
