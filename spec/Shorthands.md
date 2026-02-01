@@ -13,12 +13,6 @@
 - neq = math.eq.not
 
 ## Utils
-- to-do = big todo break
+- todo = big to-do break
 - hx = highlight text
-- tx = text colour
- 
-## Abbr
-- a = abbr.a
-- apl = abbr.pla
-- al = abbr.l
-- apll = abbr.pll
+- tx = text colour 
