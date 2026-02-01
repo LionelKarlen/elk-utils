@@ -1,5 +1,4 @@
-#import "@preview/hydra:0.6.2": *;
-#import "@preview/abbr:0.3.0";
+#import "deps.typ": abbr, hydra;
 #import "util.typ": format_list
 /// A basic, nondescript layout that serves as the baseline for all others.
 /// It sets the page, margins, and proper metadata for the document.

@@ -1,4 +1,4 @@
-#import "@preview/showybox:2.0.4": showybox;
+#import "deps.typ": showybox;
 #import "util.typ": parse_positional;
 #import "colors.typ": *;
 
