@@ -81,6 +81,9 @@
   /// The series number
   /// -> number | string
   series: 1,
+  /// Whether to update the exercise numbering, based on the given series number
+  /// -> boolean
+  update_numbering: true,
   /// The numbering employed by the series
   /// -> string
   numbering: "1.1.i.",
@@ -129,6 +132,10 @@
 
 
   set heading(numbering: numbering)
+  if update_numbering {
+    let heading_counter = counter(heading)
+    heading_counter.update(series)
+  }
 
   doc
 }
