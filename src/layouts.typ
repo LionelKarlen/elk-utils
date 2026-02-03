@@ -12,6 +12,9 @@
   /// The date of creation
   /// -> datetime
   date: datetime.today(),
+  /// Show the abbreviations section at the end of the document
+  /// -> boolean
+  show_abbreviations: true,
   doc,
 ) = {
   set page(
@@ -42,7 +45,7 @@
   doc
 
   // Abbreviations table setup
-  {
+  if show_abbreviations {
     show heading.where(level: 1): it => {
       pagebreak(weak: true)
       it.body
@@ -81,6 +84,7 @@
   show: base_layout.with(
     authors: authors,
     date: date,
+    show_abbreviations: false,
   )
 
   let authors = format_list(authors)
@@ -147,6 +151,7 @@
   show: base_layout.with(
     authors: authors,
     date: date,
+    show_abbreviations: true,
   )
 
   let authors = format_list(authors)
@@ -230,4 +235,63 @@
   }
 
   doc
+}
+
+/// Layout used for cheatsheets.
+///
+/// -> content
+#let cheatsheet(
+  /// The class for which the document is being typed
+  /// -> string
+  class: "",
+  /// The authors involved in the project
+  /// -> string | string[]
+  authors: "",
+  /// The date of creation
+  /// -> datetime
+  date: datetime.today(),
+  /// Whether the cheatsheet should be in landscape orientation
+  /// -> boolean
+  landscape: true,
+  /// Whether to show the abbreviations table
+  /// -> boolean;
+  abbreviations: false,
+  /// How many columns to use per page
+  /// -> int
+  divisions: 4,
+  doc,
+) = {
+  show: base_layout.with(
+    authors: authors,
+    show_abbreviations: abbreviations,
+    date: date,
+  )
+
+  let authors = format_list(authors)
+
+  set page(
+    flipped: landscape,
+    margin: (x: 1cm, y: 1.5cm),
+    header: context {
+      grid(
+        columns: (1fr, 1fr, 1fr),
+        align: (left, center, right),
+        gutter: 6pt,
+        smallcaps(date.display()), smallcaps(class), smallcaps(authors),
+      )
+      v(-12pt)
+      line(length: 100%, stroke: black)
+    },
+  )
+  [#metadata("cheatsheet") <cheatsheet>]
+
+  set par(
+    spacing: 1em,
+  )
+
+  columns(
+    divisions,
+    gutter: 6pt,
+    doc,
+  )
 }

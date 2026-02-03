@@ -1,3 +1,4 @@
+#import "deps.typ": showybox;
 /// Format an array into a string list, or leave as string
 ///
 /// -> string
@@ -41,4 +42,9 @@
   } else {
     return (first, ..others)
   }
+}
+
+#let concept-block(body) = {
+  let colours = (red, blue, green)
+  showybox()
 }
