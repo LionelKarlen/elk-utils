@@ -1,4 +1,4 @@
-#import "deps.typ": abbr, hydra;
+#import "deps.typ": abbr, hydra, zebraw;
 #import "localisation.typ": i18n;
 #import "util.typ": format_list
 /// A basic, nondescript layout that serves as the baseline for all others.
@@ -23,6 +23,18 @@
   )
 
   set text(size: 13pt)
+
+  show: zebraw.with(
+    numbering-separator: true,
+    lang: false,
+    radius: 0pt,
+  )
+
+  // Set code block font
+  show raw: it => {
+    set text(font: "BlexMono Nerd Font Mono")
+    it
+  }
 
   set par(
     linebreaks: "optimized",
@@ -289,7 +301,7 @@
 
   columns(
     divisions,
-    gutter: 6pt,
-    doc,
+    gutter: 5pt,
+    text(size: 10pt, doc),
   )
 }
